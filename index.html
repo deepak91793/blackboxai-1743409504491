@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicTube - YouTube & Spotify Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-gray-900 dark:text-white">
+                        <i class="fas fa-music mr-2"></i> MusicTube
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <button id="dark-mode-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-white">Discover Music & Videos</h1>
+            <p class="mt-4 text-xl text-blue-100">Play from YouTube and Spotify in one place</p>
+            
+            <!-- Search Box -->
+            <div class="mt-8 max-w-xl mx-auto">
+                <div class="flex rounded-lg shadow-sm bg-white dark:bg-gray-800 overflow-hidden">
+                    <input type="text" id="search-input" class="flex-1 px-4 py-3 border-0 focus:ring-0 dark:bg-gray-800 dark:text-white" placeholder="Search for songs, artists or videos...">
+                    <button id="search-button" class="px-6 bg-blue-600 text-white font-medium hover:bg-blue-700">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Featured Categories -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Browse Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="category-card bg-gradient-to-br from-red-500 to-red-600 text-white rounded-lg p-6 shadow hover:shadow-lg transition">
+                    <i class="fas fa-play-circle text-3xl mb-2"></i>
+                    <h3 class="font-bold">Trending Videos</h3>
+                </a>
+                <a href="#" class="category-card bg-gradient-to-br from-green-500 to-green-600 text-white rounded-lg p-6 shadow hover:shadow-lg transition">
+                    <i class="fab fa-spotify text-3xl mb-2"></i>
+                    <h3 class="font-bold">Top Charts</h3>
+                </a>
+                <a href="#" class="category-card bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg p-6 shadow hover:shadow-lg transition">
+                    <i class="fas fa-compact-disc text-3xl mb-2"></i>
+                    <h3 class="font-bold">New Releases</h3>
+                </a>
+                <a href="#" class="category-card bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-lg p-6 shadow hover:shadow-lg transition">
+                    <i class="fas fa-heart text-3xl mb-2"></i>
+                    <h3 class="font-bold">For You</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- Recently Played -->
+        <section class="mb-16">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Recently Played</h2>
+                <a href="#" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">See All</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="song-card bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden" data-id="JGwWNGJdvx8" data-source="youtube">
+                    <img src="https://i.ytimg.com/vi/JGwWNGJdvx8/maxresdefault.jpg" alt="Shape of You" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 dark:text-white">Shape of You</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Ed Sheeran • 3:53</p>
+                        <button class="play-button mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                            <i class="fas fa-play mr-1"></i> Play
+                        </button>
+                    </div>
+                </div>
+                <div class="song-card bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden" data-id="kJQP7kiw5Fk" data-source="youtube">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Despacito" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 dark:text-white">Despacito</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Luis Fonsi • 3:48</p>
+                        <button class="play-button mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                            <i class="fas fa-play mr-1"></i> Play
+                        </button>
+                    </div>
+                </div>
+                <div class="song-card bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden" data-id="e2d156fdc691f579049343ec" data-source="spotify">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273e2d156fdc691f579049343ec" alt="Blinding Lights" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 dark:text-white">Blinding Lights</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">The Weeknd • 3:20</p>
+                        <button class="play-button mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                            <i class="fas fa-play mr-1"></i> Play
+                        </button>
+                    </div>
+                </div>
+                <div class="song-card bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden" data-id="8538c0b1f753484b5ad267d2" data-source="spotify">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2738538c0b1f753484b5ad267d2" alt="Levitating" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 dark:text-white">Levitating</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Dua Lipa • 3:23</p>
+                        <button class="play-button mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                            <i class="fas fa-play mr-1"></i> Play
+                        </button>
+                    </div>
+                </div>
+                <div class="song-card bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden" data-id="9bZkp7q19f0" data-source="youtube">
+                    <img src="https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Gangnam Style" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 dark:text-white">Gangnam Style</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">PSY • 4:12</p>
+                        <button class="play-button mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                            <i class="fas fa-play mr-1"></i> Play
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Your Playlists -->
+        <section>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Your Playlists</h2>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
+                    <i class="fas fa-plus mr-1"></i> New Playlist
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Playlists will load here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Dark Mode Script -->
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeIcon = darkModeToggle.querySelector('i');
+        
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            
+            if (isDark) {
+                darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                darkModeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // Initialize dark mode
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+            darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Play button functionality
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.song-card');
+                const songData = {
+                    id: card.dataset.id,
+                    title: card.querySelector('h3').textContent,
+                    artist: card.querySelector('p').textContent.split(' • ')[0],
+                    duration: card.querySelector('p').textContent.split(' • ')[1],
+                    source: card.dataset.source,
+                    image: card.querySelector('img').src
+                };
+                localStorage.setItem('currentTrack', JSON.stringify(songData));
+                window.location.href = 'player.html';
+            });
+        });
+
+        // Search functionality
+        document.getElementById('search-button').addEventListener('click', () => {
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+            }
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = document.getElementById('search-input').value.trim();
+                if (query) {
+                    window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
